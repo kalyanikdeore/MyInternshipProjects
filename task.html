@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing Structure</title>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+ 
+  <style>
+    .card-body {
+      text-align: center;
+    }
+    .btn-group{
+      margin: 10px;
+      grid-gap: 20px;
+    }
+    body{
+      background-color:grey;
+    }
+
+
+  </style>
+</head>
+<body>
+ 
+
+<div class="container">
+  <h1 class="text-center my-4">Pricing Structure</h1>
+  <div class="text-center mb-3">
+    <div class="btn-group" role="group" aria-label="Pricing Toggles">
+      <button type="button" class="btn btn-primary active" data-toggle="toggle" data-target="basic">Basic</button>
+      <button type="button" class="btn btn-primary" data-toggle="toggle" data-target="standard">Standard</button>
+      <button type="button" class="btn btn-primary" data-toggle="toggle" data-target="premium">Premium</button>
+    </div>
+  </div>
+
+  <!-- Pricing Cards -->
+  <div class="row center">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header text-center"style="background-color:Lavender;">
+          <h3>Basic Plan</h3>
+        </div>
+        <div class="card-body"style="background-color:Lavender;">
+          <h5 class="card-title"><span id="basic-price"style="color:red;">$99</span>/month</h5>
+          <p class="card-text"><ul class="features">
+                    <li>Feature 1</li>
+                    <li>Feature 2</li>
+                    <li>Feature 3</li>
+                </ul></p>
+        <!--   <button class="btn btn-primary btn-block">Select Plan</button> -->
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header text-center"style="background-color:Lavender;"><h3>Standard Plan</h3>
+        </div>
+        <div class="card-body"style="background-color:Lavender;">
+          <h5 class="card-title"><span id="standard-price" style="color:red;">$149</span>/month</h5>
+          <p class="card-text"><ul class="features">
+                    <li>Feature 1</li>
+                    <li>Feature 2</li>
+                    <li>Feature 3</li>
+                </ul></p>
+  <!--         <button class="btn btn-primary btn-block">Select Plan</button> -->
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header text-center"style="background-color:Lavender;"><h3>
+          Premium Plan</h3>
+        </div>
+        <div class="card-body" style="background-color:Lavender;">
+          <h5 class="card-title"><span id="premium-price"style="color:red;">$199</span>/month</h5>
+          <p class="card-text"><ul class="features">
+                    <li>Feature 1</li>
+                    <li>Feature 2</li>
+                    <li>Feature 3</li>
+                </ul></p>
+         <!--  <button class="btn btn-primary btn-block">Select Plan</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- Custom JavaScript for Interactive Toggles -->
+<script>
+  $(document).ready(function() {
+    // Initialize active toggle
+    $('[data-toggle="toggle"]').click(function() {
+      $(this).addClass('active').siblings().removeClass('active');
+      updatePrices($(this).data('target'));
+    });
+  });
+
+  // Function to update prices based on selected plan
+  function updatePrices(plan) {
+    const prices = {
+      'basic': { price: 99 },
+      'standard': { price: 149 },
+      'premium': { price: 199 }
+    };
+
+    const currencySymbol = '$'; // Default currency symbol, can be customized
+    const currencyUnit = 'month'; // Default currency unit, can be customized
+
+    // Update prices on cards
+    $('#basic-price').text(currencySymbol + prices[plan].price);
+    $('#standard-price').text(currencySymbol + prices[plan].price);
+    $('#premium-price').text(currencySymbol + prices[plan].price);
+  }
+</script>
+
+</body>
+</html>
